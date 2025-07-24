@@ -6,6 +6,8 @@ const acceleration = 10;
 const interval = 30;
 const gameAreaWidth = document.getElementById("gameArea").offsetWidth;
 
+let dinoLeft = 100; 
+
 function jump() {
     if (isJumping) return; 
     isJumping = true;
@@ -18,7 +20,7 @@ function jump() {
 }
 
 document.addEventListener("keydown", function(event) {
-    if (event.code === "Jump" || event.key === "space") { 
+    if (event.code === "Space" || event.key === " ") { 
         jump();
     }
 });
@@ -27,11 +29,19 @@ function moveObstaculo() {
     let obstaculoPos = obstaculo.offsetLeft;
     obstaculo.style.left = obstaculoPos - speed + "px";
 
-    checkCollision(); // Corrigido: verificar a colisão a cada movimento
+    checkCollision();
 
     if (obstaculoPos <= -20) {
         obstaculo.style.left = gameAreaWidth + "px";
     }
+}
+
+function moveDino() {
+    dinoLeft += 2; 
+    if (dinoLeft > gameAreaWidth - 60) {
+        dinoLeft = 0;
+    }
+    dino.style.left = dinoLeft + "px";
 }
 
 function checkCollision() {
@@ -47,6 +57,7 @@ function checkCollision() {
         alert("parabéns!, você perdeu para um cacto... tente novamente e brilhe!");
         clearInterval(gameInterval);
         clearInterval(speedInterval);
+        clearInterval(dinoInterval); 
     }
 }
 
@@ -56,3 +67,4 @@ function increaseSpeed() {
 
 const speedInterval = setInterval(increaseSpeed, 30000);
 const gameInterval = setInterval(moveObstaculo, interval);
+const dinoInterval = setInterval(moveDino, 30); 
