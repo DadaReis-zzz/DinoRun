@@ -1,0 +1,23 @@
+#gameArea {
+  background-color: rgba(173, 216, 230, 0.8);
+  width: 1300px;
+  height: 300px;
+  border: 5px solid #4682b4;
+  position: absolute;
+  bottom: 10px;
+  left: 70px;
+}
+
+#obstaculo {
+  background-color: rgb(8, 0, 77);
+  width: 50px;
+  height: 50px;
+  position: absolute; 
+  bottom: 0;
+}
+
+@keyframes jump {
+  0% { bottom: 0; }
+  50% { bottom: 250px; } 
+  100% { bottom: 0; }
+}
