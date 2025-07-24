@@ -18,7 +18,7 @@ function jump() {
 }
 
 document.addEventListener("keydown", function(event) {
-    if (event.code === "Space" || event.key === " ") { 
+    if (event.code === "Jump" || event.key === "space") { 
         jump();
     }
 });
